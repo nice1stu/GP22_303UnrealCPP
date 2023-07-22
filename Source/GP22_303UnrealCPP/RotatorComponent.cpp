@@ -16,4 +16,3 @@ void URotatorComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 
 	Owner->AddActorLocalRotation(Rotator);
 }
-

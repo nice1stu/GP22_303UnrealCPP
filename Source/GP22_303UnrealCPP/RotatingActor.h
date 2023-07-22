@@ -12,11 +12,11 @@ UCLASS(BlueprintType, Blueprintable)
 class GP22_303UNREALCPP_API ARotatingActor : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	ARotatingActor();
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 
-	URotatorComponent* RotatorComponent;
+		URotatorComponent* RotatorComponent;
 };
