@@ -5,12 +5,9 @@
 #include "CoreMinimal.h"
 #include "PickUpInterface.generated.h"
 
-/**
- * 
- */
-UCLASS(MinimalAPI, BlueprintType)
+UINTERFACE(MinimalAPI, BlueprintType)
 
-class GP22_303UNREALCPP_API PickUpInterface : UInterface
+class UPickUpInterface : public UInterface
 {
 	GENERATED_BODY()
 };
