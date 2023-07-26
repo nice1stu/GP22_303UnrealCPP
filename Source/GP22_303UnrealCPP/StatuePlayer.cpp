@@ -14,11 +14,17 @@ void AStatuePlayer::Move(FVector2D AxisInput)
 {
 	auto MoveVector = FVector(AxisInput.Y, -AxisInput.X, 0.f);
 
-	auto TransformedVector = UKismetMathLibrary::TransformDirection(GetActorTransform(), MoveVector);
+	auto TransformedVector = UKismetMathLibrary::TransformDirection(
+		GetActorTransform(), 
+		MoveVector
+	);
 
 	auto DeltaTime = GetWorld()->GetDeltaSeconds();
 	
 	MoveVector *= MoveSpeed;
 
-	SetActorLocation(GetActorLocation() + MoveVector * DeltaTime);
+	SetActorLocation(
+		GetActorLocation() + 
+		MoveVector * DeltaTime
+	);
 }
