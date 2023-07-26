@@ -15,7 +15,9 @@ public:
 	// Sets default values for this pawn's properties
 	AStatuePlayer();
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float MoveSpeed = 1000.f;
+
 	UFUNCTION(BlueprintCallable)
-	
 	void Move(FVector2D AxisInput);
 };
