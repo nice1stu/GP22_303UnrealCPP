@@ -11,16 +11,17 @@ class GP22_303UNREALCPP_API AStatueSpawnPoint : public AActor
 {
 	GENERATED_BODY()
 	
-public:	
-	// Sets default values for this actor's properties
-	AStatueSpawnPoint();
-
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
+public:
+	AStatueSpawnPoint();
+
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	int32 SpawnCount;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float SpawnRadius;
 };
