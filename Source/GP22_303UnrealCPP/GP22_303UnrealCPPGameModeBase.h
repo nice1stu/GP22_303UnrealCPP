@@ -6,12 +6,8 @@
 #include "GameFramework/GameModeBase.h"
 #include "GP22_303UnrealCPPGameModeBase.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class GP22_303UNREALCPP_API AGP22_303UnrealCPPGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
-	
 };

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "PickUpInterface.h"
+#include "ScoreSubsystem.h"
 #include "GameFramework/Actor.h"
 #include "Statue.generated.h"
 
@@ -12,7 +13,13 @@ class GP22_303UNREALCPP_API AStatue : public AActor,
 	public IPickUpInterface
 {
 	GENERATED_BODY()
-	
+
+private:
+	UScoreSubsystem* ScoreSubsystem;
+
+protected:
+	virtual void BeginPlay() override;
+
 public:
 	AStatue();
 
