@@ -24,6 +24,5 @@ public:
 	AStatue();
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-
 	void PickUp(); virtual void PickUp_Implementation() override;
 };

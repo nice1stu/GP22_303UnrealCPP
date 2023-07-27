@@ -3,3 +3,9 @@
 
 #include "StatueManager.h"
 
+void AStatueManager::SpawnStatue(FVector Location)
+{
+	auto NewInstance = GetWorld()->SpawnActor<AStatue>();
+	NewInstance->SetActorLocation(Location);
+	Instances.Add(NewInstance);
+}

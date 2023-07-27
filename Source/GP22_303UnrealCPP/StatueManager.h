@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Statue.h"
 #include "GameFramework/Info.h"
 #include "StatueManager.generated.h"
 
@@ -13,5 +14,16 @@ UCLASS()
 class GP22_303UNREALCPP_API AStatueManager : public AInfo
 {
 	GENERATED_BODY()
+
+private:
+	UPROPERTY()
+	TArray<AStatue*> Instances;
+
+public:
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TSoftClassPtr<AStatue> StatueClass;
+
+	UFUNCTION()
+	void SpawnStatue(FVector Location);
 	
 };

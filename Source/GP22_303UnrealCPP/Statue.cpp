@@ -20,4 +20,5 @@ void AStatue::PickUp_Implementation()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Green, FString("Woohoo, used the interface !"));
 	ScoreSubsystem->AddScore();
+	Destroy();
 }
