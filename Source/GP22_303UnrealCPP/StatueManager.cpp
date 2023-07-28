@@ -5,7 +5,7 @@
 
 void AStatueManager::SpawnStatue(FVector Location)
 {
-	auto NewInstance = GetWorld()->SpawnActor<AStatue>();
+	auto NewInstance = GetWorld()->SpawnActor<AStatue>(LoadedObject);
 	NewInstance->SetActorLocation(Location);
 	Instances.Add(NewInstance);
 }

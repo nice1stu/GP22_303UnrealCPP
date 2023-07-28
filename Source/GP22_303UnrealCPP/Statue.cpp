@@ -9,10 +9,12 @@
 AStatue::AStatue()
 {
 	PrimaryActorTick.bCanEverTick = true;
+	RandomMoveComponent = CreateDefaultSubobject<URandomMoveComponent>(TEXT("Random Move Component"));
 }
 
 void AStatue::BeginPlay()
 {
+	Super::BeginPlay();
 	ScoreSubsystem = GetWorld()->GetSubsystem<UScoreSubsystem>();
 }
 

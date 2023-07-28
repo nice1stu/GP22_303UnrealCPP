@@ -30,5 +30,5 @@ public:
 	void SpawnStatue(FVector Location);
 
 	UFUNCTION()
-		void Initialize();	
+	void Initialize();	
 };
