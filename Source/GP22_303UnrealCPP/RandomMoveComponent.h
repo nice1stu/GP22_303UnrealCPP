@@ -29,7 +29,7 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 
-	float Interval = 30.f;
+	float Interval = 1.f;
 
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 };

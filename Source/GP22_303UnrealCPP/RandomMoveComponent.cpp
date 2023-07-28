@@ -1,28 +1,19 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "RandomMoveComponent.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "StatueHelpers.h"
 
-// Private
-void URandomMoveComponent::RandomMove()
-{
-	auto Owner = GetOwner();
-
-	FVector RandomUnitVector = UKismetMathLibrary::RandomUnitVector();
-	RandomUnitVector.Z = 0.f;
-
-	const FVector RandomLocation = RandomUnitVector * Radius;
-
-	Owner->SetActorLocation(Owner->GetActorLocation() + RandomLocation);
-}
-
-// Protected
-
-// Public
 URandomMoveComponent::URandomMoveComponent()
 {
 	PrimaryComponentTick.bCanEverTick = true;
+}
+
+void URandomMoveComponent::RandomMove()
+{
+	const auto Owner = GetOwner();
+	const auto RandomLocation = UStatueHelpers::RandomLocation(Owner->GetActorLocation(), Radius);
+	Owner->SetActorLocation(RandomLocation);
 }
 
 void URandomMoveComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)

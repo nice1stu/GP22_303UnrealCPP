@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
 #include "StatueManager.h"
+#include "Statue.h"
 #include "GP22_303UnrealCPPGameModeBase.generated.h"
 
 UCLASS()
@@ -18,5 +19,10 @@ private:
 	AStatueManager* StatueManager;
 
 public:
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+		TSoftClassPtr<AStatue> StatueClass;
+
 	virtual void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage) override;
+
+	void SpawnStatue(const FVector Location);
 };

@@ -3,21 +3,37 @@
 
 #include "StatueSpawnPoint.h"
 #include "DrawDebugHelpers.h"
+#include "StatueHelpers.h"
+#include "StatueManager.h"
+#include "Kismet/GameplayStatics.h"
 
 AStatueSpawnPoint::AStatueSpawnPoint()
 {
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
 void AStatueSpawnPoint::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// Loop through SpawnCount
+	StatueManager = Cast<AStatueManager>(
+		UGameplayStatics::GetActorOfClass(
+			GetWorld(),
+			AStatueManager::StaticClass()
+		)
+	);
+
+	auto Location = GetActorLocation();
+
+	for (int i = 0; i < SpawnCount; i++)
+	{
 		// Generate random position inside the radius
+		const auto RandomPoint = UStatueHelpers::RandomLocation(Location, SpawnRadius);
+
 		// Spawn 1 entity using StatueManager
-	
+		StatueManager->SpawnStatue(RandomPoint);
+	}
+
 }
 
 void AStatueSpawnPoint::Tick(float DeltaTime)

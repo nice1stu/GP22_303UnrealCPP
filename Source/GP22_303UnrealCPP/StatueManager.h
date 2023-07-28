@@ -19,11 +19,16 @@ private:
 	UPROPERTY()
 	TArray<AStatue*> Instances;
 
+	UPROPERTY()
+	UClass* LoadedObject;
+
 public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TSoftClassPtr<AStatue> StatueClass;
 
 	UFUNCTION()
 	void SpawnStatue(FVector Location);
-	
+
+	UFUNCTION()
+		void Initialize();	
 };

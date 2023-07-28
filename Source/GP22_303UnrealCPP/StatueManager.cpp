@@ -9,3 +9,8 @@ void AStatueManager::SpawnStatue(FVector Location)
 	NewInstance->SetActorLocation(Location);
 	Instances.Add(NewInstance);
 }
+
+void AStatueManager::Initialize()
+{
+	LoadedObject = StatueClass.LoadSynchronous();
+}

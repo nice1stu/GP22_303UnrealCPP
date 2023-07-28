@@ -4,12 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "../GP22_303UnrealCPP/GP22_303UnrealCPPGameModeBase.h"
 #include "StatueSpawnPoint.generated.h"
 
 UCLASS()
 class GP22_303UNREALCPP_API AStatueSpawnPoint : public AActor
 {
 	GENERATED_BODY()
+
+private:
+	UPROPERTY()
+		AStatueManager* StatueManager;
 	
 protected:
 	virtual void BeginPlay() override;
@@ -19,9 +24,9 @@ public:
 
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Spawning")
 	int32 SpawnCount;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Spawning")
 	float SpawnRadius;
 };
