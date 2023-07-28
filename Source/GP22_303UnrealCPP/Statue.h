@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "PickUpInterface.h"
 #include "ScoreSubsystem.h"
-#include "RandomMoveComponent.h"
 #include "GameFramework/Actor.h"
 #include "Statue.generated.h"
 
@@ -19,9 +18,6 @@ private:
 	UScoreSubsystem* ScoreSubsystem;
 
 protected:
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	URandomMoveComponent* RandomMoveComponent;
-
 	virtual void BeginPlay() override;
 
 public:
