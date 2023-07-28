@@ -29,8 +29,6 @@ void AStatueSpawnPoint::BeginPlay()
 	{
 		// Generate random position inside the radius
 		const auto RandomPoint = UStatueHelpers::RandomLocation(Location, SpawnRadius);
-
-		// Spawn 1 entity using StatueManager
 		StatueManager->SpawnStatue(RandomPoint);
 	}
 
@@ -39,6 +37,7 @@ void AStatueSpawnPoint::BeginPlay()
 void AStatueSpawnPoint::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
 	DrawDebugSphere(GetWorld(), GetActorLocation(), SpawnRadius, 12, FColor::Red);
 }
 

@@ -14,7 +14,7 @@ class GP22_303UNREALCPP_API AStatueSpawnPoint : public AActor
 
 private:
 	UPROPERTY()
-		AStatueManager* StatueManager;
+	AStatueManager* StatueManager;
 	
 protected:
 	virtual void BeginPlay() override;
