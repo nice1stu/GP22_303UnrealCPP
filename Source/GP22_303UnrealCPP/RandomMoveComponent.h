@@ -18,10 +18,7 @@ public:
 	URandomMoveComponent();
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-		float Radius = 500.f;
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-		float Interval = .5f;
+		float Interval = 2.0f;
 
 	UFUNCTION(BlueprintCallable)
 		void RandomMove();

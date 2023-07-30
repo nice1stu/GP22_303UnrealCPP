@@ -27,14 +27,12 @@ void AStatueSpawnPoint::BeginPlay()
         )
     );
 
-    // Spawn the statues using the global spawn point and radius
     for (int i = 0; i < SpawnCount; i++)
     {
         const auto RandomPoint = UStatueHelpers::RandomLocation(GlobalSpawnPoint, GlobalSpawnRadius);
         StatueManager->SpawnStatue(RandomPoint);
     }
 }
-
 
 void AStatueSpawnPoint::Tick(float DeltaTime)
 {
