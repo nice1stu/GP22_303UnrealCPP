@@ -13,26 +13,23 @@ URandomMoveComponent::URandomMoveComponent()
 void URandomMoveComponent::RandomMove()
 {
     const auto Owner = GetOwner();
+    const auto SpawnPoint = GlobalSpawnPoint;
 
-    // Generate a random direction vector on the XY plane
     FVector RandomDirection = FMath::VRand();
-    RandomDirection.Z = 0.0f; // Set the Z component to 0 to keep the movement on the ground level
+    RandomDirection.Z = 0.0f;
 
-    // Calculate the desired location as the global spawn point plus the random direction
-    FVector DesiredLocation = GlobalSpawnPoint + RandomDirection.GetSafeNormal() * GlobalSpawnRadius;
+    float RandomDistance = FMath::FRandRange(0.0f, GlobalSpawnRadius);
 
-    // Clamp the desired location to be within the spawn radius
-    float DistanceToSpawn = FVector::Dist2D(DesiredLocation, GlobalSpawnPoint);
+    FVector DesiredLocation = SpawnPoint + RandomDirection.GetSafeNormal() * RandomDistance;
+
+    float DistanceToSpawn = FVector::Dist2D(DesiredLocation, SpawnPoint);
     if (DistanceToSpawn > GlobalSpawnRadius)
     {
-        // Calculate the new desired location limited to the spawn radius
-        DesiredLocation = GlobalSpawnPoint + (DesiredLocation - GlobalSpawnPoint).GetSafeNormal() * GlobalSpawnRadius;
+        DesiredLocation = SpawnPoint + (DesiredLocation - SpawnPoint).GetSafeNormal() * GlobalSpawnRadius;
     }
 
-    // Set the Z component to 0 to keep the statue on the ground level
     DesiredLocation.Z = 0.0f;
 
-    // Update the owner's location to the desired location
     Owner->SetActorLocation(DesiredLocation);
 }
 
