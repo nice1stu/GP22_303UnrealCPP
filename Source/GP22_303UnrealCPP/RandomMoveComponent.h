@@ -25,7 +25,7 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 
-	float Radius = 1000.f;
+	float Radius = 500.f;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 
