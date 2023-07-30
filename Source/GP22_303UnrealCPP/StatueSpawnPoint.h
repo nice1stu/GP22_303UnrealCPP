@@ -28,5 +28,5 @@ public:
 	int32 SpawnCount;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Spawning")
-	float SpawnRadius;
+	float SpawnRadius = 3000;
 };

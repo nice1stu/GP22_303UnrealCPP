@@ -25,11 +25,11 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 
-	float Radius = 100.f;
+	float Radius = 1000.f;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 
-	float Interval = 3.f;
+	float Interval = .5f;
 
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 };
