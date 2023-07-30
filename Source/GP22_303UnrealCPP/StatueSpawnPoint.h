@@ -25,7 +25,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Spawning")
-	int32 SpawnCount;
+	int32 SpawnCount = 3;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Spawning")
 	float SpawnRadius = 3000;
