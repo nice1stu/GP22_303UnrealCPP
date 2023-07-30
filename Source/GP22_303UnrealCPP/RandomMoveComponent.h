@@ -6,8 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "RandomMoveComponent.generated.h"
 
-
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class GP22_303UNREALCPP_API URandomMoveComponent : public UActorComponent
 {
 	GENERATED_BODY()
@@ -15,21 +14,17 @@ class GP22_303UNREALCPP_API URandomMoveComponent : public UActorComponent
 private:
 	float Timer;
 
-	UFUNCTION()
-	
-	void RandomMove();
-
-
-public:	
+public:
 	URandomMoveComponent();
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-
-	float Radius = 500.f;
+		float Radius = 500.f;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+		float Interval = .5f;
 
-	float Interval = .5f;
+	UFUNCTION(BlueprintCallable)
+		void RandomMove();
 
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 };

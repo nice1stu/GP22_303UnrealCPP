@@ -1,9 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Statue.h"
-
-
 
 // Sets default values
 AStatue::AStatue()
@@ -22,5 +19,5 @@ void AStatue::PickUp_Implementation()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Green, FString("Woohoo, used the interface !"));
 	ScoreSubsystem->AddScore();
-	Destroy();
+	RandomMoveComponent->RandomMove(); // Call RandomMove from the RandomMoveComponent
 }

@@ -1,13 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "StatueSpawnPoint.h"
 #include "DrawDebugHelpers.h"
 #include "StatueHelpers.h"
 #include "StatueManager.h"
 #include "Kismet/GameplayStatics.h"
 #include "MyGameGlobals.h"
-
 
 AStatueSpawnPoint::AStatueSpawnPoint()
 {
@@ -44,4 +42,3 @@ void AStatueSpawnPoint::Tick(float DeltaTime)
 
 	DrawDebugSphere(GetWorld(), GetActorLocation(), SpawnRadius, 12, FColor::Red);
 }
-
