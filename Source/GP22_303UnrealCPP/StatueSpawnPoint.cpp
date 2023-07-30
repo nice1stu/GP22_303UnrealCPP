@@ -6,6 +6,8 @@
 #include "StatueHelpers.h"
 #include "StatueManager.h"
 #include "Kismet/GameplayStatics.h"
+#include "MyGameGlobals.h"
+
 
 AStatueSpawnPoint::AStatueSpawnPoint()
 {
@@ -14,25 +16,27 @@ AStatueSpawnPoint::AStatueSpawnPoint()
 
 void AStatueSpawnPoint::BeginPlay()
 {
-	Super::BeginPlay();
+    Super::BeginPlay();
 
-	StatueManager = Cast<AStatueManager>(
-		UGameplayStatics::GetActorOfClass(
-			GetWorld(),
-			AStatueManager::StaticClass()
-		)
-	);
+    // Set the global spawn point and radius
+    GlobalSpawnPoint = GetActorLocation();
+    GlobalSpawnRadius = SpawnRadius;
 
-	auto Location = GetActorLocation();
+    StatueManager = Cast<AStatueManager>(
+        UGameplayStatics::GetActorOfClass(
+            GetWorld(),
+            AStatueManager::StaticClass()
+        )
+    );
 
-	for (int i = 0; i < SpawnCount; i++)
-	{
-		// Generate random position inside the radius
-		const auto RandomPoint = UStatueHelpers::RandomLocation(Location, SpawnRadius);
-		StatueManager->SpawnStatue(RandomPoint);
-	}
-
+    // Spawn the statues using the global spawn point and radius
+    for (int i = 0; i < SpawnCount; i++)
+    {
+        const auto RandomPoint = UStatueHelpers::RandomLocation(GlobalSpawnPoint, GlobalSpawnRadius);
+        StatueManager->SpawnStatue(RandomPoint);
+    }
 }
+
 
 void AStatueSpawnPoint::Tick(float DeltaTime)
 {
