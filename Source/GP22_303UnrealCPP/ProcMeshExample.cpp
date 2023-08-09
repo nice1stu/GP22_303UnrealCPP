@@ -52,8 +52,19 @@ void AProcMeshExample::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	return;
+	if (Tiles.Num() > 0)
+	{
+		auto RandomIndex = FMath::RandRange(0, Tiles.Num() - 1);
+		auto RandomTile = Tiles[RandomIndex];
+		FVector Location = GetActorLocation();
+		Location.X -= TileSize * .5f;
+		Location.Y -= TileSize * .5f;
+		auto TileLocation = Location + (FVector(RandomTile->X, RandomTile->Y, 0) * TileSize);
+		DrawDebugPoint(GetWorld(), TileLocation, 25.f, FColor::Red);
+	}
 
+
+	/*
 	FVector Location = GetActorLocation();
 	Location.X -= TileSize * .5f;
 	Location.Y -= TileSize * .5f;
@@ -97,6 +108,7 @@ void AProcMeshExample::Tick(float DeltaTime)
 
 		DrawDebugString(GetWorld(), BottomLeftCorner, DebugString, 0, FColor::White, .0f);
 	}
+	*/
 }
 
 void AProcMeshExample::RoamingGenerator()
