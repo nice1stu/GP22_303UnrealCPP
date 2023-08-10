@@ -44,6 +44,8 @@ public:
 	virtual void OnConstruction(const FTransform& Transform) override;
 	virtual void Tick(float DeltaTime) override;
 
+	FVector GetRandomTileLocation();
+
 	FVector RandomTileLocation();
 
 private:

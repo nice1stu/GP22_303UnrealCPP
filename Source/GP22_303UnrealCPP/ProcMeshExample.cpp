@@ -15,11 +15,6 @@ AProcMeshExample::AProcMeshExample()
 void AProcMeshExample::BeginPlay()
 {
 	Super::BeginPlay();
-}
-
-void AProcMeshExample::OnConstruction(const FTransform& Transform)
-{
-	Super::OnConstruction(Transform);
 
 	MeshData.SetNum(3);
 
@@ -47,21 +42,42 @@ void AProcMeshExample::OnConstruction(const FTransform& Transform)
 	}
 }
 
+void AProcMeshExample::OnConstruction(const FTransform& Transform)
+{
+	Super::OnConstruction(Transform);
+
+	/*MeshData.SetNum(3);
+
+	// Floor
+	MeshData[0] = new FMeshData();
+	MeshData[0]->SectionNumber = 0;
+	MeshData[0]->Material = FloorMaterial;
+
+	// Ceiling
+	MeshData[1] = new FMeshData();
+	MeshData[1]->SectionNumber = 1;
+	MeshData[1]->Material = CeilingMaterial;
+
+	// Walls
+	MeshData[2] = new FMeshData();
+	MeshData[2]->SectionNumber = 2;
+	MeshData[2]->Material = WallMaterial;
+
+	RoamingGenerator();
+	GenerateMesh();
+
+	for (int i = 0; i < MeshData.Num(); i++)
+	{
+		CreateSection(MeshData[i]);
+	}*/
+}
+
 // Called every frame
 void AProcMeshExample::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (Tiles.Num() > 0)
-	{
-		auto RandomIndex = FMath::RandRange(0, Tiles.Num() - 1);
-		auto RandomTile = Tiles[RandomIndex];
-		FVector Location = GetActorLocation();
-		Location.X -= TileSize * .5f;
-		Location.Y -= TileSize * .5f;
-		auto TileLocation = Location + (FVector(RandomTile->X, RandomTile->Y, 0) * TileSize);
-		DrawDebugPoint(GetWorld(), TileLocation, 25.f, FColor::Red);
-	}
+	GetRandomTileLocation();
 
 
 	/*
@@ -109,6 +125,22 @@ void AProcMeshExample::Tick(float DeltaTime)
 		DrawDebugString(GetWorld(), BottomLeftCorner, DebugString, 0, FColor::White, .0f);
 	}
 	*/
+}
+
+FVector AProcMeshExample::GetRandomTileLocation()
+{
+	if (Tiles.Num() > 0)
+	{
+		auto RandomIndex = FMath::RandRange(0, Tiles.Num() - 1);
+		auto RandomTile = Tiles[RandomIndex];
+		FVector Location = GetActorLocation();
+		Location.X += TileSize * 0.5f;
+		Location.Y += TileSize * 0.5f;
+		auto TileLocation = Location + (FVector(RandomTile->X, RandomTile->Y, 0) * TileSize + FVector(0.5f, 0.5f, 0.f));
+		DrawDebugPoint(GetWorld(), TileLocation, 25.f, FColor::Red, false, 0.5f);
+		return TileLocation;
+	}
+	return FVector::ZeroVector;
 }
 
 void AProcMeshExample::RoamingGenerator()

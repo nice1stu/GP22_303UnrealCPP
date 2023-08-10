@@ -17,8 +17,8 @@ void AStatueSpawnPoint::BeginPlay()
     Super::BeginPlay();
 
     // Set the global spawn point and radius
-    GlobalSpawnPoint = GetActorLocation();
-    GlobalSpawnRadius = SpawnRadius;
+    /*GlobalSpawnPoint = GetActorLocation();
+    GlobalSpawnRadius = SpawnRadius;*/
 
     StatueManager = Cast<AStatueManager>(
         UGameplayStatics::GetActorOfClass(
@@ -27,9 +27,17 @@ void AStatueSpawnPoint::BeginPlay()
         )
     );
 
+    ProcMeshExample = Cast<AProcMeshExample>(
+        UGameplayStatics::GetActorOfClass(
+            GetWorld(),
+            AProcMeshExample::StaticClass()
+        )
+    );
+
     for (int i = 0; i < SpawnCount; i++)
     {
-        const auto RandomPoint = UStatueHelpers::RandomLocation(GlobalSpawnPoint, GlobalSpawnRadius);
+        //const auto RandomPoint = UStatueHelpers::RandomLocation(GlobalSpawnPoint, GlobalSpawnRadius);
+        const auto RandomPoint = ProcMeshExample->GetRandomTileLocation();
         StatueManager->SpawnStatue(RandomPoint);
     }
 }

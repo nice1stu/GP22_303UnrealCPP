@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "../GP22_303UnrealCPP/GP22_303UnrealCPPGameModeBase.h"
+#include "ProcMeshExample.h"
 #include "StatueSpawnPoint.generated.h"
 
 UCLASS()
@@ -15,6 +16,9 @@ class GP22_303UNREALCPP_API AStatueSpawnPoint : public AActor
 private:
 	UPROPERTY()
 	AStatueManager* StatueManager;
+
+	UPROPERTY()
+		AProcMeshExample* ProcMeshExample;
 	
 protected:
 	virtual void BeginPlay() override;
