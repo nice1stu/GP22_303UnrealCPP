@@ -143,6 +143,7 @@ FVector AProcMeshExample::GetRandomTileLocation()
 	return FVector::ZeroVector;
 }
 
+
 void AProcMeshExample::RoamingGenerator()
 {
 	Tiles.SetNum(TileCount);

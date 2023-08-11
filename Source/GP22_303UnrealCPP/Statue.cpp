@@ -11,9 +11,15 @@ AStatue::AStatue()
 
 void AStatue::BeginPlay()
 {
-	Super::BeginPlay();
-	ScoreSubsystem = GetWorld()->GetSubsystem<UScoreSubsystem>();
+    Super::BeginPlay();
+
+    // Print the spawned statue's location
+    FString DebugMessage = FString::Printf(TEXT("Spawned Statue Location: X=%.2f, Y=%.2f, Z=%.2f"), GetActorLocation().X, GetActorLocation().Y, GetActorLocation().Z);
+    GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, DebugMessage);
+
+    ScoreSubsystem = GetWorld()->GetSubsystem<UScoreSubsystem>();
 }
+
 
 void AStatue::PickUp_Implementation()
 {
