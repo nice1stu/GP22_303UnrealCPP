@@ -5,7 +5,9 @@
 
 void AStatueManager::SpawnStatue(FVector Location)
 {
-	auto NewInstance = GetWorld()->SpawnActor<AStatue>(LoadedObject);
+	auto SpawnParams = FActorSpawnParameters();
+	SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+	auto NewInstance = GetWorld()->SpawnActor<AStatue>(LoadedObject, SpawnParams);
 	NewInstance->SetActorLocation(Location);
 	Instances.Add(NewInstance);
 }

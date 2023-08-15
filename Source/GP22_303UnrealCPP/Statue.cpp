@@ -6,7 +6,7 @@
 AStatue::AStatue()
 {
 	PrimaryActorTick.bCanEverTick = true;
-	RandomMoveComponent = CreateDefaultSubobject<URandomMoveComponent>(TEXT("Random Move Component"));
+	//RandomMoveComponent = CreateDefaultSubobject<URandomMoveComponent>(TEXT("Random Move Component"));
 }
 
 void AStatue::BeginPlay()
@@ -25,5 +25,6 @@ void AStatue::PickUp_Implementation()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Green, FString("Woohoo, used the interface !"));
 	ScoreSubsystem->AddScore();
-	RandomMoveComponent->RandomMove();
+	Destroy();
+	//RandomMoveComponent->RandomMove();
 }

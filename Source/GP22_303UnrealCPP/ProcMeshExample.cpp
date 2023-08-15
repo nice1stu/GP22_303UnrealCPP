@@ -9,12 +9,6 @@ AProcMeshExample::AProcMeshExample()
 	PrimaryActorTick.bCanEverTick = true;
 	ProceduralMeshComponent = CreateDefaultSubobject<UProceduralMeshComponent>("Procedural Mesh");
 	ProceduralMeshComponent->SetupAttachment(GetRootComponent());
-}
-
-// Called when the game starts or when spawned
-void AProcMeshExample::BeginPlay()
-{
-	Super::BeginPlay();
 
 	MeshData.SetNum(3);
 
@@ -40,6 +34,12 @@ void AProcMeshExample::BeginPlay()
 	{
 		CreateSection(MeshData[i]);
 	}
+}
+
+// Called when the game starts or when spawned
+void AProcMeshExample::BeginPlay()
+{
+	Super::BeginPlay();
 }
 
 void AProcMeshExample::OnConstruction(const FTransform& Transform)
